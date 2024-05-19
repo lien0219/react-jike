@@ -52,5 +52,16 @@ module.exports={
 
 }
 
+ 样式reset 
 
+npm install normalize.css
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
