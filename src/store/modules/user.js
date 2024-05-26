@@ -1,5 +1,6 @@
 import { request, setToken as _setToken, getToken, removeToken } from "@/utils";
 import { createSlice } from "@reduxjs/toolkit";
+import { loginAPI, getProfileAPI } from "@/apis/user";
 
 const userStore = createSlice({
   name: "user",
@@ -35,14 +36,14 @@ const userReducer = userStore.reducer;
 // 登录
 const fetchLogin = (loginForm) => {
   return async (dispatch) => {
-    const res = await request.post("/authorizations", loginForm);
+    const res = await loginAPI(loginForm);
     dispatch(setToken(res.data.token));
   };
 };
 // 获取用户信息
 const fetchUserInfo = () => {
   return async (dispatch) => {
-    const res = await request.get("/user/profile");
+    const res = await getProfileAPI();
     dispatch(setUserInfo(res.data));
   };
 };
