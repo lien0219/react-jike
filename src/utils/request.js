@@ -9,10 +9,10 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
-    const token = getToken();
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // const token = getToken();
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
     return config;
   },
   (error) => {
@@ -26,13 +26,13 @@ request.interceptors.response.use(
   },
   (error) => {
     console.dir(error);
-    if (error.response.status === 401) {
-      const router = Router();
-      removeToken();
-      router.navigate("/login").then(() => {
-        window.location.reload();
-      });
-    }
+    // if (error.response.status === 401) {
+    //   const router = Router();
+    //   removeToken();
+    //   router.navigate("/login").then(() => {
+    //     window.location.reload();
+    //   });
+    // }
     return Promise.reject(error);
   }
 );

@@ -4,6 +4,7 @@ import logo from "@/assets/logo.jpg";
 import { useDispatch } from "react-redux";
 import { fetchLogin } from "@/store/modules/user";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,15 @@ const Login = () => {
   const onFinish = async (values) => {
     console.log(values);
     try {
-      await dispatch(fetchLogin(values));
-      navigate("/");
-      message.success("登录成功！");
+      const res = await axios.post("http://localhost:8080/user", values);
+      console.log(res, "111111");
+      // await dispatch(fetchLogin(values));
+      // navigate("/");
+      // message.success("登录成功！");
+      if (values.mobile == res.data.mobile && values.code == res.data.code) {
+        navigate("/");
+        message.success("登录成功！");
+      }
     } catch (error) {
       message.error("登录失败！");
       console.log(error);
