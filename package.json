@@ -22,7 +22,8 @@
     "start": "set BROWSER=none && craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server ./server/data.json --port 8080"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "json-server": "^0.17.2",
     "sass": "^1.77.2"
   }
 }
