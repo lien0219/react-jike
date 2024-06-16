@@ -66,3 +66,18 @@ height: 100%;
 
 富文本编辑器
 npm i react-quill@2.0.0-beta.2
+
+打包-打包体积分析
+业务背景
+通过分析打包体积，才能知道项目中的哪部分内容体积过大，方便知道哪些包如何来优化
+使用步骤
+
+1. 安装分析打包体积的包：npm i source-map-explorer
+2. 在 package.json 中的 scripts 标签中，添加分析打包体积的命令
+3. 对项目打包：npm run build（如果已经打过包，可省略这一步）
+4. 运行分析命令：npm run analyze
+5. 通过浏览器打开的页面，分析图表中的包体积
+   核心代码：
+   "scripts": {
+   "analyze": "source-map-explorer 'build/static/js/\*.js'",
+   }
