@@ -13,15 +13,15 @@ const Login = () => {
   const onFinish = async (values) => {
     console.log(values);
     try {
-      const res = await axios.post("http://localhost:8080/user", values);
-      console.log(res, "111111");
-      // await dispatch(fetchLogin(values));
-      // navigate("/");
-      // message.success("登录成功！");
-      if (values.mobile == res.data.mobile && values.code == res.data.code) {
-        navigate("/");
-        message.success("登录成功！");
-      }
+      // const res = await axios.post("http://localhost:8080/user", values);
+      // console.log(res, "111111");
+      await dispatch(fetchLogin(values));
+      navigate("/");
+      message.success("登录成功！");
+      // if (values.mobile == res.data.mobile && values.code == res.data.code) {
+      //   navigate("/");
+      //   message.success("登录成功！");
+      // }
     } catch (error) {
       message.error("登录失败！");
       console.log(error);

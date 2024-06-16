@@ -7,3 +7,12 @@ export function getChannelAPI() {
     method: "GET",
   });
 }
+
+// 文章表单
+export function createArticleAPI(data) {
+  return request({
+    url: "/mp/articles?draft=false",
+    method: "POST",
+    data,
+  });
+}
