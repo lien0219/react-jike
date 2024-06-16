@@ -137,6 +137,15 @@ const Article = () => {
     });
     // getList(reqData);
   };
+
+  // 分页
+  const pageChange = (page) => {
+    // console.log(page);
+    setReqData({
+      ...reqData,
+      page,
+    });
+  };
   return (
     <div>
       <Card
@@ -186,7 +195,17 @@ const Article = () => {
         </Form>
       </Card>
       <Card title={`根据筛选条件共查询到 ${count} 条结果：`}>
-        <Table rowKey="id" columns={columns} dataSource={list} />
+        <Table
+          rowKey="id"
+          columns={columns}
+          dataSource={list}
+          pagination={{
+            // current: params.page,
+            pageSize: reqData.per_page,
+            onChange: pageChange,
+            total: count,
+          }}
+        />
       </Card>
     </div>
   );
